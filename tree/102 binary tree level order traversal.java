@@ -1,3 +1,13 @@
+/*
+https://leetcode.com/problems/binary-tree-level-order-traversal/
+
+binary tree -> level order traversal -> BFS
+nodes in queue at start = in same level => put all nodes in queue in same list -> put list in larger list
+
+time: O(V + E) = O(V) -> visit each TreeNode once
+space: O(V) -> every TreeNode appears in the final list once
+*/
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -13,14 +23,6 @@
  *     }
  * }
  */
-
-/*
-binary tree -> level order traversal -> BFS
-nodes in queue at start = in same level => put all nodes in queue in same list -> put list in larger list
-
-time: O(V + E) = O(V) -> visit each TreeNode once
-space: O(V) -> every TreeNode appears in the final list once
-*/
 
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
