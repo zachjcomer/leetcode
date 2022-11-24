@@ -14,6 +14,11 @@
  * }
  */
 
+/*
+binary tree -> level order traversal -> BFS
+nodes in queue at start = in same level => put all nodes in queue in same list -> put list in larger list
+*/
+
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> list = new LinkedList<>();
