@@ -1,5 +1,6 @@
+# my solutions
 LeetCode link.
-(documentation lookup explanation, link)..
+(documentation lookup explanation, link).
 
 One to two sentence explanation.
 
