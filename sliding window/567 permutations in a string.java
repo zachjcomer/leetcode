@@ -5,7 +5,7 @@ approach 1: track the net character matchings
 
 tally the initial character matches between s1, s2 -> move the fixed window across the remainder of s2 and check the changes in s2's counts
 
-time: O(|s1| + (|s2| - |s1|)) -> |s1| to get initial matchings, |s2| - |s1| to iterate over remainder of s2
+time: O(|s2|) -> |s1| to get initial matchings, |s2| - |s1| to iterate over remainder of s2 = |s2| total time
 space: O(1) -> counts ~ 26, match variable
 */
 
