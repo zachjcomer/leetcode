@@ -1,12 +1,11 @@
 # my solutions
-LeetCode link.
+* LeetCode link.
+* (documentation lookup explanation, link).
 
-(documentation lookup explanation, link).
+* One to two sentence explanation.
 
-One to two sentence explanation.
+* Time complexity.
 
-Time complexity.
+* Space complexity.
 
-Space complexity.
-
-Code.
+* `Code`.
