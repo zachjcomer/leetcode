@@ -8,6 +8,7 @@ time: O(4^n / n^1/2) (Catalan Number) -> 2^2n (=4^n) possible strings where n^-/
 space: O(4^n / n^1/2) -> must generate all of the valid parenthesis
 */
 
+// approach 1
 class Solution {
     List<String> sols = new LinkedList<>();
     int max;
@@ -37,5 +38,47 @@ class Solution {
                 gen(str, n + 1, l, r + 1);
             }
         }
+    }
+}
+
+// approach 2
+class Solution {
+    List<String> sols = new LinkedList<>();
+    public List<String> generateParenthesis(int n) {
+        gen(true, 2 * n, "");
+        return sols;
+    }
+
+    public void gen(boolean push, int n, String str) {
+        if (n == 0 && push) {
+            if (isValid(str)) sols.add(str);
+        }
+
+        else if (n > 0) {
+            if (push) {
+                str = str + "(";
+            }
+            else {
+                str = str + ")"; 
+            }
+            gen(push, n - 1, str);
+            gen(!push, n - 1, str);
+        }
+    }
+
+    private boolean isValid(String str) {
+        Stack<Character> check = new Stack<>();
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '(') {
+                check.push(str.charAt(i));
+            }
+            else if (!check.empty()) {
+                check.pop();
+            }
+            else {
+                return false;
+            }
+        }
+        return (check.empty()) ? true : false;
     }
 }
