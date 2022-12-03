@@ -4,7 +4,6 @@
 
 * One to two line explanation.
 
-* Time complexity.
-* Space complexity.
+* Time complexity.* Space complexity.
 
-`Code`.
+`Code`
