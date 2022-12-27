@@ -12,6 +12,8 @@ class Solution {
         double prev = 0;
         int fleets = 0;
 
+        Stack<Integer> stack = new Stack<>();
+
         int[][] kinem = new int[position.length][2];
         for (int i = 0; i < position.length; i++) {
             kinem[i] = new int[] { position[i], speed[i] };
@@ -19,14 +21,14 @@ class Solution {
 
         Arrays.sort(kinem, (a, b) -> a[0] - b[0]);
 
-        for (int i = kinem.length - 1; i >= 0; i--) {
-            if (t(target, kinem[i]) > prev) {
-                prev = t(target, kinem[i]);
-                fleets++;
+        for (int i = 0; i < kinem.length; i++) {
+            while (!stack.isEmpty() && t(target, kinem[stack.peek()]) <= t(target, kinem[i])) {
+                stack.pop();
             }
+            stack.push(i);
         }
 
-        return fleets;
+        return stack.size();
     }
 
     private double t(int target, int[] kin) {
