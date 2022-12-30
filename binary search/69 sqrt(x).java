@@ -16,7 +16,6 @@ class Solution {
         
         while (l < r) {
             int mid = l + (r - l) / 2;
-            System.out.printf("(%d, %d) -> %d\n", l, r, mid);
             
             if (mid < x / mid) { // want smallest square larger than target
                 l = mid + 1;
