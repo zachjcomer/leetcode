@@ -1,7 +1,7 @@
 /*
 https://leetcode.com/problems/word-pattern/description/
 
-bijection: char a <-> string A -> add bijective map -> check that current char and string are appropriate transformations -> otherwise return false
+bijection: char a <-> string A -> if F: a -> A DOESNT match current OR current is already mapped to different char, not a bijection, otherwise add to map -> return false if any non-bijection is found
 
 time: O(|s| + |p|) -> split string O(|s|) -> for each word, add char/string to maps O(1) -> check all words until not bijection O(|p|)
 space: O(SIGMA * max(L)) -> bijection from chars => alphabet # of mappings O(SIGMA) -> each letter in alphabet mapped to words of max length L
@@ -10,27 +10,22 @@ space: O(SIGMA * max(L)) -> bijection from chars => alphabet # of mappings O(SIG
 class Solution {
     public boolean wordPattern(String pattern, String s) {
         Map<Character, String> map = new HashMap<>();
-        Map<String, Character> revMap = new HashMap<>();
 
         char[] pat = pattern.toCharArray();
-        int p = 0;
-
         String[] words = s.split(" ");
 
         if (pat.length != words.length) return false;
 
-        while (p < pat.length) {
-            if (map.containsKey(pat[p]) ^ revMap.containsKey(words[p])) return false;
-            
-            if (!(map.containsKey(pat[p]) && revMap.containsKey(words[p]))) {
-                map.put(pat[p], words[p]);
-                revMap.put(words[p], pat[p]);
+        for (int i = 0; i < pat.length; i++) {
+            if (map.containsKey(pat[i])) {
+                if (!map.get(pat[i]).equals(words[i])) {
+                    return false;
+                }
             }
-
-            else if (!(map.get(pat[p]).equals(words[p]) && revMap.get(words[p]) == pat[p])) {
+            else if (map.containsValue(words[i])) {
                 return false;
             }
-            p++;
+            map.put(pat[i], words[i]);
         }
 
         return true;
