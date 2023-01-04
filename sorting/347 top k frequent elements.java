@@ -52,7 +52,7 @@ class Solution {
     }
 
     private int partition(int l, int r) {
-        int piv = l;
+        int piv = l + (r - l) / 2;
 
         int freq = count.get(unique[piv]);
         swap(piv, r - 1);
