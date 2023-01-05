@@ -7,20 +7,20 @@ time: O(n log n) -> sort balloons by starting position O(n log n)
 space: O(1) -> pointer for current group end
 */
 
-class Solution {
-    public int findMinArrowShots(int[][] points) {
-        int out = 1;
-        int end = 0;
+impl Solution {
+    pub fn find_min_arrow_shots(mut points: Vec<Vec<i32>>) -> i32 {
+        points.sort_unstable_by(|a, b| a[1].cmp(&b[1]));
 
-        Arrays.sort(points, (a, b) -> Integer.compare(a[1], b[1]));
+        let mut out = 1;
+        let mut end = points[0][1];
 
-        for (int i = 1; i < points.length; i++) {
-            if (points[i][0] > points[end][1]) {
-                out++;
-                end = i;
+        for p in &points[1..] {
+            if p[0] > end {
+                out += 1;
+                end = p[1];
             }
         }
 
-        return out;
+        out
     }
 }
